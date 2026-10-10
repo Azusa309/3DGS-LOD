@@ -14,4 +14,11 @@ streamed/
 outputs/
 data/
 
+# demo: large/generated assets (sog bundles, source PLYs, scene copy, build output)
+demo/assets/
+demo/sog/
+demo/scene6/
+demo/site/
+*.sog
+
 .DS_Store
