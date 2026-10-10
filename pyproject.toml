@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geolod-splat"
+version = "0.1.0"
+description = "Build better Streamed SOG LOD levels for web 3D Gaussian Splatting (contribution pruning + gated merge + fixed-geometry recovery)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "plyfile>=1.0",
+  "imageio>=2.30",
+  "torch>=2.1",
+]
+
+[project.optional-dependencies]
+# gsplat needs a CUDA GPU for rasterization; fused-ssim reproduces the paper-style loss exactly.
+gpu = ["gsplat==1.5.3"]
+eval = ["torchmetrics[image]>=1.0"]
+test = ["pytest>=7"]
+
+[project.scripts]
+geolod = "geolod.cli:main"
+
+[tool.setuptools]
+packages = ["geolod"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
