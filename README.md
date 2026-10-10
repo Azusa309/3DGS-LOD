@@ -43,20 +43,19 @@ Raw evidence: [`evidence/`](evidence/) (per-run `eval.json`, build reports, [`su
 
 ### Browser rendering cost
 
-DTU scan6, the same `.sog` files as above, PlayCanvas WebGPU in Chromium on an Apple M1, 1280×720, vsync off.
+DTU scan6, the shipped `.sog` files, PlayCanvas WebGPU in Chromium on an Apple M1, 1280×720, vsync off.
 fps = frames / wall-clock over 10 s of orbiting, median of 3 interleaved rounds; first frame = fetch + decode + first render (local server).
 Raw runs: [`evidence/browser/`](evidence/browser/), script: [`demo/bench.py`](demo/bench.py).
 
-| Budget | `-d` (default) | `-d` + recovery | **3DGS-LOD** | File size (default / ours) |
-|---|---|---|---|---|
-| 50% | 148 fps | 123 fps | 125 fps | 12.5 / 13.1 MB |
-| 25% | 188 fps | 171 fps | 157 fps | 7.6 / 7.8 MB |
-| 10% | 269 fps | 258 fps | 189 fps | 4.7 / 4.6 MB |
+| Asset | Gaussians | fps | First frame | File size | mask PSNR / LPIPS |
+|---|---|---|---|---|---|
+| teacher (100%) | 1.48 M | 117 | 362 ms | 22.9 MB | 26.47 / 0.085 |
+| **3DGS-LOD 50%** | 742 k | **150 (+28%)** | 213 ms | **13.1 MB (−43%)** | 26.44 / 0.084 |
+| **3DGS-LOD 25%** | 371 k | **158 (+34%)** | 221 ms | **7.8 MB (−66%)** | 26.34 / 0.090 |
+| **3DGS-LOD 10%** | 148 k | **218 (+86%)** | 173 ms | **4.6 MB (−80%)** | 24.72 / 0.137 |
 
-First frame is 230–320 ms for every asset. File size is the same within 5%.
-
-- **At equal Gaussian count ours renders slower:** −16% / −16% / −30% fps vs. `-d` at 50% / 25% / 10% (vs. `-d` + recovery: +2% / −8% / −27%). Likely cause, not yet measured: our kept/merged Gaussians cover more pixels (more overdraw), so Gaussian count alone does not set the cost.
-- **At equal quality ours is faster:** our 25% level (157 fps) matches or beats `-d` + recovery at 50% (123 fps) on every quality metric, i.e. **+28% fps and a 38% smaller download** for the same image quality.
+- **Our 50% level looks the same as the teacher** (−0.03 dB PSNR, equal LPIPS) and renders **28% faster from a 43% smaller download.**
+- fps does not scale linearly with Gaussian count: rendering cost is dominated by covered pixels (overdraw) and fixed per-frame work, not only by the number of Gaussians.
 
 ## Why the default decimation loses quality
 

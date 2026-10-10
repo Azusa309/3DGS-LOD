@@ -18,7 +18,7 @@ from playwright.sync_api import sync_playwright
 CHROME = os.environ.get("DEMO_CHROME") or next(iter(sorted(glob.glob(os.path.expanduser(
     "~/Library/Caches/ms-playwright/chromium-*/chrome-mac-arm64/Google Chrome for Testing.app/"
     "Contents/MacOS/Google Chrome for Testing")))), None)
-ALL = [f"{m}_lod{l}" for l in (1, 2, 3) for m in ("ours", "recov", "default")]
+ALL = ["teacher"] + [f"{m}_lod{l}" for l in (1, 2, 3) for m in ("ours", "recov", "default")]
 assets = sys.argv[1:] or ALL
 W, H = int(os.environ.get("BENCH_W", 1280)), int(os.environ.get("BENCH_H", 720))
 API = os.environ.get("BENCH_API", "")          # "webgl2" to force WebGL2
