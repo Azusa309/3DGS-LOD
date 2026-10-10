@@ -1,0 +1,12 @@
+{
+  "data_dir": "/root/work/geolod/data/dtu-scan1/colmap",
+  "num_views": 49,
+  "names_order_equal": true,
+  "max_abs_c2w_diff": 3.765531297883484e-08,
+  "max_abs_K_diff": 0.0,
+  "image_size_equal": true,
+  "max_abs_transform_diff": 2.9537519319333683e-08,
+  "test_split_equal": true,
+  "image_paths_equal": true,
+  "pass": true
+}

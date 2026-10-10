@@ -1,0 +1,12 @@
+{
+  "data_dir": "/root/datasets/dtu-scan6/colmap",
+  "num_views": 49,
+  "names_order_equal": true,
+  "max_abs_c2w_diff": 4.290495118908222e-08,
+  "max_abs_K_diff": 0.0,
+  "image_size_equal": true,
+  "max_abs_transform_diff": 4.0748032503756804e-08,
+  "test_split_equal": true,
+  "image_paths_equal": true,
+  "pass": true
+}
