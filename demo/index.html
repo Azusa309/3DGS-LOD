@@ -201,6 +201,13 @@ app.on('update', (dt) => {
 function startBench() { bench = { start: performance.now(), t: [] }; }
 $('bench').onclick = startBench;
 window.__ready = () => sides.A.ready && sides.B.ready;
+// Deterministic camera control for recording (demo/make_gif.py).
+window.__setOrbit = (yaw, pitch = 0, dist = 1) => { autoRotate = false; Object.assign(orbit, { yaw, pitch, dist }); };
+// clean=1: hide the toolbar and show only the asset labels (for screenshots / GIFs).
+if (q.get('clean') === '1') {
+  $('ui').style.display = 'none';
+  app.on('update', () => { for (const k of ['A', 'B']) if (sides[k].ready) $('tag' + k).textContent = ASSETS[sides[k].key].label; });
+}
 window.__startBench = startBench;
 if (q.get('bench') === '1') {
   const wait = setInterval(() => { if (window.__ready()) { clearInterval(wait); startBench(); } }, 200);

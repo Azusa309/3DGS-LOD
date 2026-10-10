@@ -7,6 +7,13 @@ Outputs standard **Streamed SOG** (`lod-meta.json`), so the stock PlayCanvas vie
 
 `lodkit build` takes a trained 3DGS PLY plus the COLMAP views it was trained on and writes coarser LOD levels that look much better than PlayCanvas `splat-transform`'s built-in decimation at the same Gaussian count.
 
+<p align="center">
+  <img src="docs/demo_10pct.gif" width="560" alt="Split-screen orbit of DTU scan6 at 10% of the Gaussians: 3DGS-LOD on the left is sharp, splat-transform -d on the right is blurry">
+  <br>
+  <sub>DTU scan6, both sides keep 10% of 1.48 M Gaussians, rendered in the browser (PlayCanvas) from the shipped Streamed SOG.
+  Left: 3DGS-LOD. Right: <code>splat-transform -d</code>. Recorded with <a href="demo/make_gif.py"><code>demo/make_gif.py</code></a>.</sub>
+</p>
+
 > Scope: measured on 2 DTU objects (scan1, scan6) at 50% / 25% / 10% budgets on one RTX 4090.
 > Browser FPS / first-frame time and phone measurements are **not done yet**.
 

@@ -7,6 +7,13 @@
 
 `lodkit build` 输入训练好的 3DGS PLY 和训练它所用的 COLMAP 视角，输出更粗的 LOD 级别。在相同高斯数下，画质明显优于 PlayCanvas `splat-transform` 自带的抽稀。
 
+<p align="center">
+  <img src="docs/demo_10pct.gif" width="560" alt="DTU scan6 在 10% 高斯数下的左右对比环绕动图：左边 3DGS-LOD 清晰，右边 splat-transform -d 发糊">
+  <br>
+  <sub>DTU scan6，两边都只保留 148 万高斯中的 10%，用浏览器（PlayCanvas）直接渲染最终交付的 Streamed SOG。
+  左：3DGS-LOD；右：<code>splat-transform -d</code>。由 <a href="demo/make_gif.py"><code>demo/make_gif.py</code></a> 录制。</sub>
+</p>
+
 > 测试范围：2 个 DTU 物体（scan1、scan6），50% / 25% / 10% 三级预算，单张 RTX 4090。
 > 浏览器帧率、首帧时间和手机实测**尚未完成**。
 
