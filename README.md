@@ -1,5 +1,7 @@
 # 3DGS-LOD
 
+English | [中文](README.zh-CN.md)
+
 **Better level-of-detail for web 3D Gaussian Splatting: same visual quality with half the Gaussians.**
 Outputs standard **Streamed SOG** (`lod-meta.json`), so the stock PlayCanvas viewer loads it unchanged.
 
