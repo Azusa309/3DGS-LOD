@@ -1,0 +1,17 @@
+# environments / build artefacts
+.venv/
+*.egg-info/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+
+# large binary assets (regenerate with the scripts)
+*.ply
+*.npy
+*.webp
+streamed/
+outputs/
+data/
+
+.DS_Store
