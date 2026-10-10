@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "geolod-splat"
+name = "3dgs-lod"
 version = "0.1.0"
 description = "Build better Streamed SOG LOD levels for web 3D Gaussian Splatting (contribution pruning + gated merge + fixed-geometry recovery)"
 readme = "README.md"
@@ -24,10 +24,10 @@ eval = ["torchmetrics[image]>=1.0"]
 test = ["pytest>=7"]
 
 [project.scripts]
-geolod = "geolod.cli:main"
+lodkit = "lodkit.cli:main"
 
 [tool.setuptools]
-packages = ["geolod"]
+packages = ["lodkit"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

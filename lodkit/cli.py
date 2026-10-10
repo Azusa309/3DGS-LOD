@@ -1,4 +1,4 @@
-"""Command line: `geolod build` and `geolod decode`."""
+"""Command line: `lodkit build` and `lodkit decode`."""
 from __future__ import annotations
 
 import argparse
@@ -7,7 +7,7 @@ import sys
 
 
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(prog="geolod", description=__doc__)
+    ap = argparse.ArgumentParser(prog="lodkit", description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     b = sub.add_parser("build", help="teacher PLY + COLMAP views -> Streamed SOG (lod-meta.json)")

@@ -15,7 +15,7 @@ def _raster():
     try:
         from gsplat import rasterization
     except ImportError as e:  # pragma: no cover
-        raise ImportError("gsplat is required for this step: pip install 'geolod-splat[gpu]' "
+        raise ImportError("gsplat is required for this step: pip install '3dgs-lod[gpu]' "
                           "(needs a CUDA GPU)") from e
     return rasterization
 

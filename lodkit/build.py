@@ -1,4 +1,4 @@
-"""geolod build: teacher PLY + COLMAP training views -> standard Streamed SOG."""
+"""lodkit build: teacher PLY + COLMAP training views -> standard Streamed SOG."""
 from __future__ import annotations
 
 import json

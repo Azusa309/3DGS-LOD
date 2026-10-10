@@ -7,10 +7,10 @@ import pytest
 import torch
 import torch.nn.functional as F
 
-from geolod.colmap import Scene
-from geolod.merge import gated_merge
-from geolod.ply import read_ply, subset, write_ply
-from geolod.quat import quat_to_rot, rot_to_quat
+from lodkit.colmap import Scene
+from lodkit.merge import gated_merge
+from lodkit.ply import read_ply, subset, write_ply
+from lodkit.quat import quat_to_rot, rot_to_quat
 
 
 def rand_splats(n=500, deg=3, seed=0):

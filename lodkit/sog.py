@@ -1,7 +1,7 @@
 """Thin wrapper around the official PlayCanvas splat-transform CLI (MIT).
 
 Pinned to the version every result in evidence/ was produced with. Override
-with GEOLOD_SPLAT_TRANSFORM (e.g. a local install path) if needed.
+with LODKIT_SPLAT_TRANSFORM (e.g. a local install path) if needed.
 Requires Node.js >= 22 (splat-transform 3.10 'engines' field).
 """
 from __future__ import annotations
@@ -15,7 +15,7 @@ SPLAT_TRANSFORM_VERSION = "3.10.0"
 
 
 def _cmd() -> list[str]:
-    custom = os.environ.get("GEOLOD_SPLAT_TRANSFORM")
+    custom = os.environ.get("LODKIT_SPLAT_TRANSFORM")
     if custom:
         return shlex.split(custom)
     if shutil.which("npx") is None:
