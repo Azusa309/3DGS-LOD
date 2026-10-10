@@ -1,0 +1,50 @@
+{
+  "teacher": "outputs/scan6/teacher/ply/point_cloud_29999.ply",
+  "num_gaussians": 1484725,
+  "train_views": 42,
+  "score_seconds": 3.529841184616089,
+  "levels": [
+    {
+      "lod": 1,
+      "keep": 0.5,
+      "count": 742362,
+      "merge": {
+        "num_removed": 742363,
+        "num_merged": 294350,
+        "frac_removed_merged": 0.3965041361166976,
+        "kept_receiving_merges": 118233
+      },
+      "seconds": 37.746100664138794,
+      "file_bytes": 175198909
+    },
+    {
+      "lod": 2,
+      "keep": 0.25,
+      "count": 371181,
+      "merge": {
+        "num_removed": 1113544,
+        "num_merged": 411192,
+        "frac_removed_merged": 0.3692642589785406,
+        "kept_receiving_merges": 120938
+      },
+      "seconds": 23.13883662223816,
+      "file_bytes": 87600193
+    },
+    {
+      "lod": 3,
+      "keep": 0.1,
+      "count": 148472,
+      "merge": {
+        "num_removed": 1336253,
+        "num_merged": 446198,
+        "frac_removed_merged": 0.3339173045822909,
+        "kept_receiving_merges": 79248
+      },
+      "seconds": 16.193746089935303,
+      "file_bytes": 35040869
+    }
+  ],
+  "bundle_seconds": 82.9737696647644,
+  "streamed_bytes": 57483454,
+  "total_seconds": 163.65746021270752
+}

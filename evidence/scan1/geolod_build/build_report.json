@@ -1,0 +1,50 @@
+{
+  "teacher": "/root/work/geolod/outputs/scan1/teacher/ply/point_cloud_29999.ply",
+  "num_gaussians": 1451176,
+  "train_views": 42,
+  "score_seconds": 3.7513909339904785,
+  "levels": [
+    {
+      "lod": 1,
+      "keep": 0.5,
+      "count": 725588,
+      "merge": {
+        "num_removed": 725588,
+        "num_merged": 258970,
+        "frac_removed_merged": 0.3569105332502743,
+        "kept_receiving_merges": 95708
+      },
+      "seconds": 35.037354946136475,
+      "file_bytes": 171240245
+    },
+    {
+      "lod": 2,
+      "keep": 0.25,
+      "count": 362794,
+      "merge": {
+        "num_removed": 1088382,
+        "num_merged": 338413,
+        "frac_removed_merged": 0.31093219108732045,
+        "kept_receiving_merges": 95064
+      },
+      "seconds": 21.754316806793213,
+      "file_bytes": 85620861
+    },
+    {
+      "lod": 3,
+      "keep": 0.1,
+      "count": 145118,
+      "merge": {
+        "num_removed": 1306058,
+        "num_merged": 354309,
+        "frac_removed_merged": 0.2712812141574111,
+        "kept_receiving_merges": 62057
+      },
+      "seconds": 15.728539943695068,
+      "file_bytes": 34249325
+    }
+  ],
+  "bundle_seconds": 82.25287389755249,
+  "streamed_bytes": 56597369,
+  "total_seconds": 158.59778499603271
+}
