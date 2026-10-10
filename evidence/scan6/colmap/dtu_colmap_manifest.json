@@ -1,0 +1,221 @@
+{
+  "source": "DTU MVS SampleSet",
+  "scan": 6,
+  "light": 3,
+  "image_scale": 0.5,
+  "units": "DTU world coordinates (mm), same frame as STL reference",
+  "num_images": 49,
+  "num_points3D": 13694,
+  "mean_reproj_error_px": 0.5263254572778713,
+  "max_camera_center_drift_mm": 5.740903894981146e-13,
+  "points_bbox_mm": [
+    [
+      -1327.181736446385,
+      -897.1456259495069,
+      106.30266687612885
+    ],
+    [
+      252.19828658647387,
+      823.1696811662729,
+      1399.5622934013813
+    ]
+  ],
+  "views": [
+    {
+      "name": "rect_001.png",
+      "view_id": 1
+    },
+    {
+      "name": "rect_002.png",
+      "view_id": 2
+    },
+    {
+      "name": "rect_003.png",
+      "view_id": 3
+    },
+    {
+      "name": "rect_004.png",
+      "view_id": 4
+    },
+    {
+      "name": "rect_005.png",
+      "view_id": 5
+    },
+    {
+      "name": "rect_006.png",
+      "view_id": 6
+    },
+    {
+      "name": "rect_007.png",
+      "view_id": 7
+    },
+    {
+      "name": "rect_008.png",
+      "view_id": 8
+    },
+    {
+      "name": "rect_009.png",
+      "view_id": 9
+    },
+    {
+      "name": "rect_010.png",
+      "view_id": 10
+    },
+    {
+      "name": "rect_011.png",
+      "view_id": 11
+    },
+    {
+      "name": "rect_012.png",
+      "view_id": 12
+    },
+    {
+      "name": "rect_013.png",
+      "view_id": 13
+    },
+    {
+      "name": "rect_014.png",
+      "view_id": 14
+    },
+    {
+      "name": "rect_015.png",
+      "view_id": 15
+    },
+    {
+      "name": "rect_016.png",
+      "view_id": 16
+    },
+    {
+      "name": "rect_017.png",
+      "view_id": 17
+    },
+    {
+      "name": "rect_018.png",
+      "view_id": 18
+    },
+    {
+      "name": "rect_019.png",
+      "view_id": 19
+    },
+    {
+      "name": "rect_020.png",
+      "view_id": 20
+    },
+    {
+      "name": "rect_021.png",
+      "view_id": 21
+    },
+    {
+      "name": "rect_022.png",
+      "view_id": 22
+    },
+    {
+      "name": "rect_023.png",
+      "view_id": 23
+    },
+    {
+      "name": "rect_024.png",
+      "view_id": 24
+    },
+    {
+      "name": "rect_025.png",
+      "view_id": 25
+    },
+    {
+      "name": "rect_026.png",
+      "view_id": 26
+    },
+    {
+      "name": "rect_027.png",
+      "view_id": 27
+    },
+    {
+      "name": "rect_028.png",
+      "view_id": 28
+    },
+    {
+      "name": "rect_029.png",
+      "view_id": 29
+    },
+    {
+      "name": "rect_030.png",
+      "view_id": 30
+    },
+    {
+      "name": "rect_031.png",
+      "view_id": 31
+    },
+    {
+      "name": "rect_032.png",
+      "view_id": 32
+    },
+    {
+      "name": "rect_033.png",
+      "view_id": 33
+    },
+    {
+      "name": "rect_034.png",
+      "view_id": 34
+    },
+    {
+      "name": "rect_035.png",
+      "view_id": 35
+    },
+    {
+      "name": "rect_036.png",
+      "view_id": 36
+    },
+    {
+      "name": "rect_037.png",
+      "view_id": 37
+    },
+    {
+      "name": "rect_038.png",
+      "view_id": 38
+    },
+    {
+      "name": "rect_039.png",
+      "view_id": 39
+    },
+    {
+      "name": "rect_040.png",
+      "view_id": 40
+    },
+    {
+      "name": "rect_041.png",
+      "view_id": 41
+    },
+    {
+      "name": "rect_042.png",
+      "view_id": 42
+    },
+    {
+      "name": "rect_043.png",
+      "view_id": 43
+    },
+    {
+      "name": "rect_044.png",
+      "view_id": 44
+    },
+    {
+      "name": "rect_045.png",
+      "view_id": 45
+    },
+    {
+      "name": "rect_046.png",
+      "view_id": 46
+    },
+    {
+      "name": "rect_047.png",
+      "view_id": 47
+    },
+    {
+      "name": "rect_048.png",
+      "view_id": 48
+    },
+    {
+      "name": "rect_049.png",
+      "view_id": 49
+    }
+  ]
+}
