@@ -15,7 +15,7 @@
 </p>
 
 > 测试范围：2 个 DTU 物体（scan1、scan6），50% / 25% / 10% 三级预算，单张 RTX 4090。
-> 浏览器帧率、首帧时间和手机实测**尚未完成**。
+> 浏览器速度只在一台笔记本上测过（Apple M1，Chromium WebGPU）；还没有手机实测。
 
 ## 结果
 
@@ -40,6 +40,23 @@
 - **几何是打平，不是变好：** 相对参考扫描的误差差值都在 ±0.05 mm 以内。我们不宣称几何更好。
 
 原始证据：[`evidence/`](evidence/)（每次运行的 `eval.json`、构建报告、[`summary.md`](evidence/summary.md)）。
+
+### 浏览器渲染开销
+
+DTU scan6，与上表相同的 `.sog` 文件，Chromium 中的 PlayCanvas WebGPU，Apple M1，1280×720，关闭垂直同步。
+fps = 绕物体旋转 10 秒内的帧数 / 墙钟时间，取 3 轮交错测量的中位数；首帧 = 下载 + 解码 + 首次渲染（本地服务器）。
+原始数据：[`evidence/browser/`](evidence/browser/)，脚本：[`demo/bench.py`](demo/bench.py)。
+
+| 预算 | `-d`（默认） | `-d` + 恢复 | **3DGS-LOD** | 文件大小（默认 / 我们） |
+|---|---|---|---|---|
+| 50% | 148 fps | 123 fps | 125 fps | 12.5 / 13.1 MB |
+| 25% | 188 fps | 171 fps | 157 fps | 7.6 / 7.8 MB |
+| 10% | 269 fps | 258 fps | 189 fps | 4.7 / 4.6 MB |
+
+所有资产首帧都在 230–320 ms 之间，文件大小相差不超过 5%。
+
+- **相同高斯数下我们更慢：** 在 50% / 25% / 10% 下比 `-d` 慢 16% / 16% / 30%（比 `-d` + 恢复：+2% / −8% / −27%）。推测原因（尚未实测）：我们保留和合并后的高斯覆盖的像素更多（overdraw 更大），所以渲染开销不只由高斯数决定。
+- **相同画质下我们更快：** 我们的 25% 级（157 fps）在每项画质指标上都持平或优于 `-d` + 恢复的 50% 级（123 fps），也就是同等画质下 **fps 高 28%、下载量小 38%**。
 
 ## 默认抽稀为什么掉画质
 
@@ -94,7 +111,7 @@ lodkit decode out/streamed/lod-meta.json --level 2 --out lod2.ply
 
 - 需要训练视角和相机；`splat-transform` 只需要 PLY。没有视角时，请用 `splat-transform -d`。
 - 只测了 2 个 DTU 物体（转台物体，145 万到 148 万个高斯）；还没有 Mip-NeRF 360 场景。
-- 还没有浏览器帧率、首帧时间和显存测量；高斯数相同意味着渲染开销相近，但这一点尚未实测。
+- 浏览器速度只在一台 Apple M1 笔记本上测过；没有手机、独立显卡和显存测量。构建 LOD 时还没有惩罚合并高斯带来的 overdraw。
 - 没有与 LightGaussian、AtlasLC、CVT-GS 对比。
 - 恢复步数（3000）没有调参。
 
@@ -104,6 +121,7 @@ lodkit decode out/streamed/lod-meta.json --level 2 --out lod2.ply
 - `scripts/`：生成 `evidence/` 的实验脚本（基线、消融、评测）
 - `evidence/`：全部结果 JSON
 - `tests/`：CPU 单元测试（`pytest`）
+- `demo/`：浏览器 A/B 查看器、GIF 录制和基准测试脚本（[`demo/README.md`](demo/README.md)）
 
 ## 致谢
 

@@ -191,9 +191,12 @@ app.on('update', (dt) => {
       const r = { mode: $('mode').value, a: sides.A.key, b: sides.B.key, api: device.deviceType,
                   width: device.width, height: device.height, frames: t.length,
                   median_ms: t[t.length >> 1], p95_ms: t[Math.floor(t.length * 0.95)],
+                  // Throughput = frames / wall-clock seconds. With vsync off the per-frame dt is
+                  // bimodal (pipelined frames) and does not sum to wall time, so median/mean dt mislead.
+                  fps: bench.t.length * 1000 / (performance.now() - bench.start),
                   first_frame_ms: { A: sides.A.loadMs, B: sides.B.loadMs }, userAgent: navigator.userAgent };
       window.__bench = r; bench = null;
-      $('stats').textContent = `median ${r.median_ms.toFixed(2)} ms (${(1000 / r.median_ms).toFixed(0)} fps), p95 ${r.p95_ms.toFixed(2)} ms`;
+      $('stats').textContent = `${r.fps.toFixed(0)} fps (frames / wall time), p95 ${r.p95_ms.toFixed(2)} ms`;
       console.log('BENCH', JSON.stringify(r));
     }
   }

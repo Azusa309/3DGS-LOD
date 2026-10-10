@@ -15,7 +15,7 @@ Outputs standard **Streamed SOG** (`lod-meta.json`), so the stock PlayCanvas vie
 </p>
 
 > Scope: measured on 2 DTU objects (scan1, scan6) at 50% / 25% / 10% budgets on one RTX 4090.
-> Browser FPS / first-frame time and phone measurements are **not done yet**.
+> Browser speed measured on one laptop only (Apple M1, Chromium WebGPU); no phone measurements yet.
 
 ## Results
 
@@ -40,6 +40,23 @@ What this shows:
 - **Geometry is a tie**, not a win: differences vs. the reference scan stay within ±0.05 mm. We do not claim better geometry.
 
 Raw evidence: [`evidence/`](evidence/) (per-run `eval.json`, build reports, [`summary.md`](evidence/summary.md)).
+
+### Browser rendering cost
+
+DTU scan6, the same `.sog` files as above, PlayCanvas WebGPU in Chromium on an Apple M1, 1280×720, vsync off.
+fps = frames / wall-clock over 10 s of orbiting, median of 3 interleaved rounds; first frame = fetch + decode + first render (local server).
+Raw runs: [`evidence/browser/`](evidence/browser/), script: [`demo/bench.py`](demo/bench.py).
+
+| Budget | `-d` (default) | `-d` + recovery | **3DGS-LOD** | File size (default / ours) |
+|---|---|---|---|---|
+| 50% | 148 fps | 123 fps | 125 fps | 12.5 / 13.1 MB |
+| 25% | 188 fps | 171 fps | 157 fps | 7.6 / 7.8 MB |
+| 10% | 269 fps | 258 fps | 189 fps | 4.7 / 4.6 MB |
+
+First frame is 230–320 ms for every asset. File size is the same within 5%.
+
+- **At equal Gaussian count ours renders slower:** −16% / −16% / −30% fps vs. `-d` at 50% / 25% / 10% (vs. `-d` + recovery: +2% / −8% / −27%). Likely cause, not yet measured: our kept/merged Gaussians cover more pixels (more overdraw), so Gaussian count alone does not set the cost.
+- **At equal quality ours is faster:** our 25% level (157 fps) matches or beats `-d` + recovery at 50% (123 fps) on every quality metric, i.e. **+28% fps and a 38% smaller download** for the same image quality.
 
 ## Why the default decimation loses quality
 
@@ -94,7 +111,7 @@ Cost: 1.48 M Gaussians, three levels, **173 s** on an RTX 4090 (scoring 9 s, lev
 
 - Needs training views and cameras; `splat-transform` needs only a PLY. Without views, use `splat-transform -d`.
 - Only 2 DTU objects (turntable objects, 1.45–1.48 M Gaussians); no Mip-NeRF 360 scenes yet.
-- No browser FPS, first-frame or memory measurements yet; equal Gaussian count implies similar rendering cost, but this is not measured.
+- Browser speed measured on one Apple M1 laptop only; no phone, discrete-GPU or GPU-memory measurements. Overdraw from merged Gaussians is not yet penalised during LOD building.
 - Not compared against LightGaussian, AtlasLC or CVT-GS.
 - Recovery steps (3000) not tuned.
 
@@ -104,6 +121,7 @@ Cost: 1.48 M Gaussians, three levels, **173 s** on an RTX 4090 (scoring 9 s, lev
 - `scripts/` — the experiment scripts that produced `evidence/` (baselines, ablations, evaluation)
 - `evidence/` — all result JSONs
 - `tests/` — CPU unit tests (`pytest`)
+- `demo/` — browser A/B viewer, GIF recorder and benchmark ([`demo/README.md`](demo/README.md))
 
 ## Acknowledgements
 
